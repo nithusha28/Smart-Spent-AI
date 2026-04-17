@@ -1,0 +1,183 @@
+import { Expense, Budget, SavingsGoal, Achievement } from './types';
+
+// All amounts in INR (Indian Rupees)
+export const mockExpenses: Expense[] = [
+  {
+    id: '1',
+    amount: 1500,
+    category: 'Food',
+    description: 'Coffee and breakfast',
+    date: new Date(2024, 0, 15),
+    isRecurring: true,
+    autoDetected: true,
+  },
+  {
+    id: '2',
+    amount: 3500,
+    category: 'Transport',
+    description: 'Monthly bus pass',
+    date: new Date(2024, 0, 10),
+    isRecurring: true,
+    autoDetected: true,
+  },
+  {
+    id: '3',
+    amount: 10000,
+    category: 'Education',
+    description: 'Online course subscription',
+    date: new Date(2024, 0, 8),
+    isRecurring: false,
+    autoDetected: false,
+  },
+  {
+    id: '4',
+    amount: 2500,
+    category: 'Entertainment',
+    description: 'Movie ticket',
+    date: new Date(2024, 0, 14),
+    isRecurring: false,
+    autoDetected: true,
+  },
+  {
+    id: '5',
+    amount: 5000,
+    category: 'Utilities',
+    description: 'Internet bill',
+    date: new Date(2024, 0, 1),
+    isRecurring: true,
+    autoDetected: true,
+  },
+  {
+    id: '6',
+    amount: 7500,
+    category: 'Shopping',
+    description: 'New shoes',
+    date: new Date(2024, 0, 13),
+    isRecurring: false,
+    autoDetected: false,
+  },
+  {
+    id: '7',
+    amount: 3000,
+    category: 'Health',
+    description: 'Gym membership',
+    date: new Date(2024, 0, 5),
+    isRecurring: true,
+    autoDetected: true,
+  },
+  {
+    id: '8',
+    amount: 2000,
+    category: 'Food',
+    description: 'Dinner at restaurant',
+    date: new Date(2024, 0, 12),
+    isRecurring: false,
+    autoDetected: true,
+  },
+  {
+    id: '9',
+    amount: 1200,
+    category: 'Transport',
+    description: 'Uber ride',
+    date: new Date(2024, 0, 15),
+    isRecurring: false,
+    autoDetected: true,
+  },
+  {
+    id: '10',
+    amount: 4500,
+    category: 'Shopping',
+    description: 'Books and stationery',
+    date: new Date(2024, 0, 11),
+    isRecurring: false,
+    autoDetected: false,
+  },
+];
+
+export const mockBudgets: Budget[] = [
+  {
+    id: 'b1',
+    category: 'Food',
+    limit: 25000,
+    currentSpent: 5500,
+    period: 'monthly',
+  },
+  {
+    id: 'b2',
+    category: 'Transport',
+    limit: 8000,
+    currentSpent: 4700,
+    period: 'monthly',
+  },
+  {
+    id: 'b3',
+    category: 'Entertainment',
+    limit: 12000,
+    currentSpent: 2500,
+    period: 'monthly',
+  },
+  {
+    id: 'b4',
+    category: 'Shopping',
+    limit: 15000,
+    currentSpent: 12000,
+    period: 'monthly',
+  },
+];
+
+export const mockGoals: SavingsGoal[] = [
+  {
+    id: 'g1',
+    title: 'Emergency Fund',
+    targetAmount: 500000,
+    currentAmount: 235000,
+    deadline: new Date(2024, 11, 31),
+    category: 'Savings',
+  },
+  {
+    id: 'g2',
+    title: 'Laptop Fund',
+    targetAmount: 150000,
+    currentAmount: 45000,
+    deadline: new Date(2024, 5, 30),
+    category: 'Tech',
+  },
+  {
+    id: 'g3',
+    title: 'Summer Trip',
+    targetAmount: 2000,
+    currentAmount: 800,
+    deadline: new Date(2024, 5, 1),
+    category: 'Travel',
+  },
+];
+
+export const mockAchievements: Achievement[] = [
+  {
+    id: 'a1',
+    title: 'Budget Master',
+    description: 'Stayed under budget for 3 consecutive months',
+    icon: '🎯',
+    unlockedAt: new Date(2024, 0, 10),
+  },
+  {
+    id: 'a2',
+    title: 'Spender Scout',
+    description: 'Identified 5 recurring expenses',
+    icon: '🔍',
+    unlockedAt: new Date(2024, 0, 5),
+  },
+  {
+    id: 'a3',
+    title: 'First Goal',
+    description: 'Created your first savings goal',
+    icon: '🎉',
+    unlockedAt: new Date(2023, 11, 20),
+  },
+  {
+    id: 'a4',
+    title: 'Savings Champion',
+    description: 'Saved 30% of monthly income',
+    icon: '⭐',
+  },
+];

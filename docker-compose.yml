@@ -1,0 +1,73 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: smartspend-db
+    environment:
+      POSTGRES_USER: smartspend
+      POSTGRES_PASSWORD: smartspend_dev_password
+      POSTGRES_DB: smartspend
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U smartspend"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Backend API
+  backend:
+    build: ./backend
+    container_name: smartspend-backend
+    environment:
+      DATABASE_URL: "postgresql://smartspend:smartspend_dev_password@postgres:5432/smartspend"
+      JWT_SECRET: "dev-secret-key-change-in-production"
+      NODE_ENV: "development"
+      FRONTEND_URL: "http://localhost:3000"
+      ML_SERVICE_URL: "http://ml-service:8000"
+    ports:
+      - "5000:5000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./backend/src:/app/src
+    command: npm run dev
+
+  # ML Service
+  ml-service:
+    build: ./ml-service
+    container_name: smartspend-ml
+    environment:
+      ENV: "development"
+      HOST: "0.0.0.0"
+      PORT: "8000"
+      ALLOWED_ORIGINS: "http://localhost:3000,http://localhost:5000"
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./ml-service:/app
+
+  # Frontend (optional - can run separately with npm)
+  frontend:
+    image: node:18-alpine
+    container_name: smartspend-frontend
+    working_dir: /app
+    volumes:
+      - ./:/app
+    ports:
+      - "3000:3000"
+    command: npm run dev
+    environment:
+      NEXT_PUBLIC_API_URL: "http://localhost:5000"
+
+volumes:
+  postgres_data:
+
+networks:
+  default:
+    name: smartspend-network
