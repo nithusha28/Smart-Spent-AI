@@ -1,6 +1,5 @@
 {
-  "installCommand": "npm install",
   "buildCommand": "next build",
   "outputDirectory": ".next",
-  "ignoreCommand": "exit 0"
+  "installCommand": "npm install"
 }
