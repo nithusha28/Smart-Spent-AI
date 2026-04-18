@@ -1,14 +1,6 @@
 {
-    "installCommand": "npm install",
-    "buildCommand": "npm run build",
-    "experimentalServices": {
-        "frontend": {
-            "routePrefix": "/",
-            "framework": "nextjs"
-        },
-        "backend": {
-            "entrypoint": "backend",
-            "routePrefix": "/_/backend"
-        }
-    }
+  "installCommand": "npm install",
+  "buildCommand": "next build",
+  "outputDirectory": ".next",
+  "ignoreCommand": "exit 0"
 }
